@@ -1,0 +1,25 @@
+.btn {  
+    border: none !important;
+    height: 46px;
+    font-family: 'Graphik Medium';
+    border-radius: 72px;
+    font-size: 16px;
+    line-height: 18px;
+
+    &.btn-default {
+        background: linear-gradient(173.86deg, #FB217F 18.07%, #F3D11A 190.23%);
+        color: #FFFFFF;
+    }
+
+    &.btn-white {
+        background: #FFFFFF;
+        color: #000000;
+    }
+    &.btn-rect {
+        border-radius: 6px;
+    }
+}
+
+a.btn {
+    padding-top: 0.85rem;
+}

@@ -1,0 +1,23 @@
+.question-answer {
+    background: #FFFFFF;
+    border: 1.5px solid rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+    border-radius: 8px;
+    color: #000000;
+    margin-bottom: 2rem;
+    padding: 1.5rem 2rem;
+
+    h4 {
+        font-family: 'Graphik Medium';
+        font-size: 24px;
+        line-height: 26px;
+        margin-bottom: 1rem;
+    }
+
+    div {
+        font-family: 'Graphik Regular';
+        font-size: 14px;
+        line-height: 160%;
+    }
+
+}
