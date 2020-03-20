@@ -25,7 +25,8 @@ const SignUp = ({dispatch}) => {
     const handlePasswordChange = e => setPassword(e.target.value);
     const handleConfirmPasswordChange = e => setConfirmPassword(e.target.value);
 
-    const submit = () => {
+    const submit = e => {
+        e.preventDefault();
         if(!processing) {
             setMessage(null);
             setProcessing(true);

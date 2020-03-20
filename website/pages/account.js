@@ -42,7 +42,8 @@ const Account = ({ user, dispatch }) => {
         }
     };
 
-    const submit = () => {
+    const submit = e => {
+        e.preventDefault();
         if (!processing) {
             setMessage(null);
             setProcessing(true);
