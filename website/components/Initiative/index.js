@@ -25,7 +25,7 @@ const Initiative = ({_id, leader, name, description, github, callTime, callLink,
                                     <Avatar key={`member-${i}`} src={m.user.profile.img} size="32" />
                                 )
                             })}
-                            {members && members.length > 6 && <div className="add">+{members.length - 10}</div>}
+                            {members && members.length > 6 && <div className="add">+{members.length - 6}</div>}
                         </div>
                     </Col>
                     <Col md="12" lg="4" className="mb-4">
