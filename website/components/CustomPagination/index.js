@@ -46,9 +46,9 @@ const CustomPagination = ({ callback, hasNextPage, hasPrevPage, nextPage, prevPa
                 </PaginationLink>
             </PaginationItem>
             {pages.length > 0 &&
-                pages.map(p => {
+                pages.map((p, i) => {
                     return (
-                        <React.Fragment key={`page-${p}`}>
+                        <React.Fragment key={`page-${i}`}>
                         <PaginationItem disabled={p === 0} onClick={() => callback(p)} active={page === p}>
                             <PaginationLink>{p > 0 ? p : '...'}</PaginationLink>
                         </PaginationItem>
