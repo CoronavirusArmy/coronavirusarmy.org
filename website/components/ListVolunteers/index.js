@@ -1,5 +1,6 @@
 import React from "react";
 import { Table } from "reactstrap";
+import Link from "next/link";
 
 import Avatar from "../Avatar";
 
@@ -13,7 +14,11 @@ const ListVolunteers = ({ users }) => {
                             <td style={{width: '50px'}}>
                                 <Avatar src={user.profile.img} size="32" />
                             </td>
-                            <td style={{width: '200px'}}>{user.profile.name}</td>
+                            <td style={{width: '200px'}}>
+                                <Link href={`/volunteer/${user._id}`}>
+                                    <a>{user.profile.name}</a>
+                                </Link>
+                            </td>
                             <td >{user.profile.skills}</td>
                             <td style={{width: '150px'}} className="text-right">{user.profile.hours} hrs/week</td>
                         </tr>

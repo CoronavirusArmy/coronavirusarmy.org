@@ -3,6 +3,7 @@ import { Row, Col, Button, Spinner } from "reactstrap";
 import { connect } from "react-redux";
 import { withRouter } from "next/router";
 import { toast } from "react-toastify";
+import Link from "next/link";
 
 import Avatar from "../../components/Avatar";
 import { InitiativeService } from "../../services/Initiative";
@@ -13,10 +14,12 @@ const Members = ({ users}) => {
             {users &&
                 users.map((u, i) => {
                     return (
-                        <div className="member d-flex align-items-center" key={`member-${i}`}>
-                            <Avatar src={u.profile.img} size="32" />
-                            <div className="name">{u.profile.name}</div>
-                        </div>
+                        <Link href={`/volunteer/${u._id}`} key={`member-${i}`}>
+                            <a className="member d-flex align-items-center">
+                                <Avatar src={u.profile.img} size="32" />
+                                <div className="name">{u.profile.name}</div>
+                            </a>
+                        </Link>
                     );
                 })}
         </React.Fragment>
