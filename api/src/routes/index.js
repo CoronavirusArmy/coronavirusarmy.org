@@ -20,7 +20,7 @@ export default () => {
     router.use("/user/info", userInfo());
     router.get("/user/latest", latest, respond, error);
     router.get("/user/:page", list, respond, error);
-    router.get("/user/:page/all", all, respond, error);
+    // router.get("/user/:page/all", all, respond, error);
     router.get("/initiatives", initiatives, respond, error);
     router.get("/initiative/:id", details, respond, error);
     router.put("/initiative/:id", passport.authenticate('jwt', { session : false }), isAuthenticated, join, respond, error);
