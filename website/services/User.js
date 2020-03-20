@@ -29,10 +29,15 @@ const get = page => {
     return CommonService.getRequest(`/user/${page}/all`, "");
 };
 
+const volunteer = id => {
+    return CommonService.getRequest(`/volunteer/${id}`, "");
+};
+
 export const UserService = {
     updateInfo,
     getInfo,
     getLatest,
     getAll,
     get,
+    volunteer,
 };
