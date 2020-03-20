@@ -33,6 +33,10 @@ const volunteer = id => {
     return CommonService.getRequest(`/volunteer/${id}`, "");
 };
 
+const screenshots = (id, page) => {
+    return CommonService.getRequest(`/volunteer/${id}/screenshots/${page}`, "");
+};
+
 export const UserService = {
     updateInfo,
     getInfo,
@@ -40,4 +44,5 @@ export const UserService = {
     getAll,
     get,
     volunteer,
+    screenshots,
 };

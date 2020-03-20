@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col, Spinner, Table } from "reactstrap";
+import Link from "next/link";
 
 import Avatar from "../components/Avatar";
 import CustomPagination from "../components/CustomPagination";
@@ -48,7 +49,11 @@ const AllVolunteersList = () => {
                                                         <div className="float-left mr-3">
                                                             <Avatar src={user.profile.img} size="32" />
                                                         </div>
-                                                        <div className="float-left mt-1">{user.profile.name}</div>
+                                                        <div className="float-left mt-1">
+                                                            <Link href={`/volunteer/${user._id}`}>
+                                                                <a>{user.profile.name}</a>
+                                                            </Link>
+                                                        </div>
                                                     </div>
                                                     <div className="clearfix"></div>
                                                     <div className="mt-2">

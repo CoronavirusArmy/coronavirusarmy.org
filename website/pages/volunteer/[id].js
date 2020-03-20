@@ -5,6 +5,8 @@ import Link from 'next/link';
 
 import { UserService } from "../../services/User";
 import Avatar from "../../components/Avatar";
+import Screenshots from "../../components/Screenshots";
+import { formatTime } from "../../helpers/utils";
 
 const Volunteer = ({ router }) => {
     const [loading, setLoading] = useState(false);
@@ -39,7 +41,9 @@ const Volunteer = ({ router }) => {
                                 <p>{data.user.profile.skills}</p>
                             </div>
                             <div className="footer">
-                                <span className="call-time">{data.user.profile.hours} hrs/week</span>
+                                <span className="call-time">
+                                    Hours Rendered: {formatTime((data.time ? data.time.seconds : 0), false, false)}
+                                </span>
                             </div>
                         </div>
                     </Col>
@@ -67,6 +71,10 @@ const Volunteer = ({ router }) => {
                     </Col>
                 </Row>
             )}
+
+            <div className="mt-5">
+                <Screenshots userId={router.query.id}/>        
+            </div>
         </div>
     );
 };
