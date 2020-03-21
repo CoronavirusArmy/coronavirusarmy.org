@@ -39,21 +39,21 @@ const ScreenshotLists = ({ screenshots }) => {
                     <Row className="items">
                         {screenshots.map(screenshot => {
                             return (
-                                <React.Fragment>
-                                    {hasImage(screenshot.screenshots) && <Col className="item mb-3" sm="12" lg="4" key={screenshot._id}>
+                                <React.Fragment key={`screenshot-${screenshot._id}`}>
+                                    {hasImage(screenshot.screenshots) && <Col className="item mb-3" sm="12" lg="4">
                                         <Card>
                                             <CardHeader>{moment(screenshot.start).format("LLL")}</CardHeader>
                                             <CardBody>
                                                 {(() => {
                                                     if (screenshot.screenshots.length > 0) {
-                                                        return screenshot.screenshots.map(img => {
+                                                        return screenshot.screenshots.map((img, i) => {
                                                             return (
                                                                 <img
                                                                     className="pointer"
                                                                     onClick={() => {
                                                                         showCarousel(img);
                                                                     }}
-                                                                    key={img}
+                                                                    key={`${screenshot._id}-${i}`}
                                                                     src={img}
                                                                 />
                                                             );

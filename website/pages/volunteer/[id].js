@@ -42,7 +42,7 @@ const Volunteer = ({ router }) => {
                             </div>
                             <div className="footer">
                                 <span className="call-time">
-                                    Hours Rendered: {formatTime((data.time ? data.time.seconds : 0), false, false)}
+                                    Volunteered Time: {formatTime((data.user.time ? data.user.time : 0), false, false)}
                                 </span>
                             </div>
                         </div>

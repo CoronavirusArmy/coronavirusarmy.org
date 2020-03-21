@@ -3,6 +3,7 @@ import { Table } from "reactstrap";
 import Link from "next/link";
 
 import Avatar from "../Avatar";
+import { formatTime } from "../../helpers/utils";
 
 const ListVolunteers = ({ users }) => {
     return (
@@ -20,7 +21,7 @@ const ListVolunteers = ({ users }) => {
                                 </Link>
                             </td>
                             <td >{user.profile.skills}</td>
-                            <td style={{width: '150px'}} className="text-right">{user.profile.hours} hrs/week</td>
+                            <td style={{width: '150px'}} className="text-right">{formatTime((user.time ? user.time : 0), false, false)}</td>
                         </tr>
                     );
                 })}
