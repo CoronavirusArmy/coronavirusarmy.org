@@ -12,6 +12,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 
 import api from "./routes";
+import { cron } from "./helpers/insync";
 
 dotenv.config();
 
@@ -76,6 +77,7 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 app.use(api());
+cron();
 
 app.listen(process.env.PORT || 8080, () => {
     console.log("%s App is running at http://localhost:%d in %s mode", chalk.green("✓"), process.env.PORT || "8080", process.env.NODE_ENV || "development");

@@ -13,6 +13,10 @@ const userSchema = new mongoose.Schema({
     redditUsername: String,
     zipcode: String,
     githubUsername: String,
+    time: {
+        type: Number,
+        default: 0
+    },
     profile: {
         name: String,
         img: String,
