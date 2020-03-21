@@ -28,7 +28,7 @@ const getInSyncData = (url, data) => {
 export const getDetails = (_req, _res, _next) => {
     _req.cData = {};
     return User.findOne({ _id: toObjectId(_req.params.id) })
-        .select("profile email")
+        .select("profile email time")
         .then(user => {
             if (!user) {
                 return _next(new Error("Volunteer cannot be found."));
@@ -47,19 +47,9 @@ export const getInitiatives = (_req, _res, _next) => {
         .select("name")
         .then(initiatives => {
             _req.responseData = {
-                user: { profile: _req.cData.user.profile },
-                time: _req.cData.time,
+                user: { profile: _req.cData.user.profile, time: _req.cData.user.time },
                 initiatives: initiatives
             };
-            _next();
-        })
-        .catch(err => _next(err));
-};
-
-export const getTime = (_req, _res, _next) => {
-    return getInSyncData("/time", { email: _req.cData.user.email })
-        .then(data => {
-            _req.cData.time = data;
             _next();
         })
         .catch(err => _next(err));

@@ -25,7 +25,7 @@ export default () => {
     router.get("/initiatives", initiatives, respond, error);
     router.get("/initiative/:id", details, respond, error);
     router.put("/initiative/:id", passport.authenticate('jwt', { session : false }), isAuthenticated, join, respond, error);
-    router.get("/volunteer/:id", getDetails, getTime, getInitiatives, respond, error);
+    router.get("/volunteer/:id", getDetails, getInitiatives, respond, error);
     router.get("/volunteer/:id/screenshots/:page", getDetails, getScreenshots, respond, error);
     
     return router;

@@ -22,8 +22,8 @@ export const list = (_req, _res, _next) => {
         page: page,
         limit: limit,
         offset: page * limit,
-        sort: { 'profile.hours': -1 },
-        select: 'profile'
+        sort: { time: -1, _id: -1 },
+        select: 'profile time'
     }
     
     const query = { visible: true };
