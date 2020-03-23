@@ -36,7 +36,7 @@ const Screenshots = ({ userId }) => {
                     <Spinner size="sm" />
                 </div>
             )}
-            {!loading && data && (
+            {!loading && data && data.totalDocs > 0 && (
                 <div className="mt-5">
                     <h4 className="mb-4">Screenshots</h4>
                     <ScreenshotLists screenshots={screenshots} />
