@@ -1,6 +1,40 @@
 import Initiative from "../../models/initiative";
 import { toObjectId } from "../../helpers/utils";
 
+const doRemove = async(userId, initiativeId, memberId) => {
+    try {
+        const initiative = await Initiative.findOne({ _id: toObjectId(initiativeId) });
+        if(initiative) {
+            const valid = ((userId.toString() === memberId) || (initiative.leader.toString() === userId.toString()));
+
+            if(valid) {
+                await Initiative.updateOne(
+                    { _id: toObjectId(initiativeId) },
+                    {
+                        $pull: { members: { user: toObjectId(memberId) } }
+                    }
+                )
+                return {
+                    success: true,
+                    error: (userId.toString() === memberId) ? `You were removed from the initiative successfully.` : 'Member were removed from the initiative successfully.'
+                }
+            } else {
+                return {
+                    success: false,
+                    error: 'Unauthorized'
+                }
+            }
+        } else {
+            throw 'Invalid Initiative ID.';
+        }
+    } catch(err) {
+        return {
+            success: false,
+            error: err.message ? err.message : err
+        }
+    }
+}
+
 export const list = (_req, _res, _next) => {
     return Initiative.find({})
         .populate("leader", "profile")
@@ -47,3 +81,18 @@ export const join = (_req, _res, _next) => {
     })
     .catch(err => _next(err));
 };
+
+export const removeMember = (_req, _res, _next) => {
+
+    return doRemove(_req.user._id, _req.params.id, _req.params.memberId)
+        .then(res => {
+            if(res.success) {
+                _req.responseData = res;
+                _next();
+            } else {
+                return _next(new Error(res.error));
+            }
+        })
+        .catch(err => _next(err));
+
+}
