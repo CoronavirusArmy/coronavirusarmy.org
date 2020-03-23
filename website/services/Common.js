@@ -86,8 +86,19 @@ const putRequest = (url, body) => {
     return axios.put(`${url}`, body);
 };
 
+const deleteRequest = (url, params) => {
+    createHeader();
+    let paramsStr = "";
+    if (typeof params === "object") paramsStr = params.join("/");
+
+    if (params) paramsStr = `/${paramsStr}`;
+
+    return axios.delete(`${url}${paramsStr}`);
+};
+
 export const CommonService = {
     getRequest,
     putRequest,
-    postRequest
+    postRequest,
+    deleteRequest,
 };

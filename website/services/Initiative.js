@@ -12,8 +12,13 @@ const join = id => {
     return CommonService.putRequest(`/initiative/${id}`, "");
 };
 
+const removeMember = (id, memberId) => {
+    return CommonService.deleteRequest(`/initiative/${id}/member/${memberId}`, "") ;
+};
+
 export const InitiativeService = {
     get,
     details,
     join,
+    removeMember,
 };
