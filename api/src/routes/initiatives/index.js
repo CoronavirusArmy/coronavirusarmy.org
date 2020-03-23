@@ -16,12 +16,12 @@ const doRemove = async(userId, initiativeId, memberId) => {
                 )
                 return {
                     success: true,
-                    error: (userId.toString() === memberId) ? `You were removed from the initiative successfully.` : 'Member were removed from the initiative successfully.'
+                    message: (userId.toString() === memberId) ? `You were removed from the initiative successfully.` : 'Member were removed from the initiative successfully.'
                 }
             } else {
                 return {
                     success: false,
-                    error: 'Unauthorized'
+                    message: 'Unauthorized'
                 }
             }
         } else {
@@ -52,6 +52,8 @@ export const details = (_req, _res, _next) => {
         .populate("leader", "profile")
         .populate("members.user", "profile")
         .then(data => {
+            if(!data)
+                return _next(new Error('Initiative does not exist'));
             _req.responseData = data;
             _next();
         })
